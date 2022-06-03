@@ -15,6 +15,8 @@ const local = {
   database: DBNAME || "las",
 };
 
+console.log("checando variavel de ambiente", process.env.DATABASE_URL);
+
 const pool = mysql.createPool(process.env.DATABASE_URL || local);
 
 module.exports = pool;
