@@ -21,7 +21,7 @@ const retornoEventos = [
     descricao: "festa popular nos bairros",
     urlFoto: "https://randomuser.me/api/portraits/men/98.jpg",
     dataInicio: "2022-05-10T03:00:00.000Z",
-    dataFim: "2022-05-30T03:00:00.000Z",
+    dataFim: "2023-05-30T03:00:00.000Z",
     status: "em-andamento",
   },
   {
@@ -108,7 +108,7 @@ describe("Testa API EVENTOS GET", () => {
         descricao: "festa popular nos bairros",
         urlFoto: "https://randomuser.me/api/portraits/men/98.jpg",
         dataInicio: "2022-05-10T03:00:00.000Z",
-        dataFim: "2022-05-30T03:00:00.000Z",
+        dataFim: "2023-05-30T03:00:00.000Z",
       },
     ]);
   });
@@ -182,7 +182,7 @@ describe("Testa API EVENTOS POST", () => {
       nome: "Carnaval de Bairro",
       descricao: "festa popular nos bairros",
       urlFoto: "https://randomuser.me/api/portraits/men/44.jpg",
-      dataInicio: "01-06-2022",
+      dataInicio: "01-05-2023",
       dataFim: "12-05-2023",
     });
 
