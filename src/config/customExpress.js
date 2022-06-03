@@ -1,6 +1,8 @@
 const express = require("express");
 const consign = require("consign");
 const bodyParser = require("body-parser");
+const swaggerUi = require("swagger-ui-express");
+const swaggerDocument = require("../../swagger.json");
 
 const ENV = process.env.NODE_ENV;
 
@@ -8,6 +10,9 @@ module.exports = () => {
   const app = express();
 
   app.set("json spaces", 4);
+
+  app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
 
