@@ -12,7 +12,7 @@ const EVENTO_FINALIZADO = "finalizado";
 class Validacao {
   async validarURLFotoPerfil(retornoForm) {
     const validadorUrl =
-      /[(https://(www.)?a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([a-zA-Z0-9@:%_+.~#?&/=-]*)/gi;
+      /[(https://(www.)?a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([A-Z0-9@:%_+.~#?&/=-]*)/gi;
     const urlEhValida = validadorUrl.test(retornoForm);
 
     if (urlEhValida) {
