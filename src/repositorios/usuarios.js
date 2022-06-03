@@ -2,38 +2,37 @@ const query = require("../infraestrutura/database/queries");
 
 class Usuario {
   listarUsuarios() {
-    const sql = "SELECT id, nome , urlFotoPerfil FROM las.usuarios";
+    const sql = "SELECT id, nome , urlFotoPerfil FROM usuarios";
 
     return query(sql);
   }
 
   buscaUsuarioId(retornoId) {
-    const sql =
-      "SELECT id, nome , urlFotoPerfil FROM las.usuarios WHERE id = ?";
+    const sql = "SELECT id, nome , urlFotoPerfil FROM usuarios WHERE id = ?";
 
     return query(sql, retornoId);
   }
 
   incluirUsuarios(retornoForm) {
-    const sql = "INSERT INTO las.usuarios SET ?";
+    const sql = "INSERT INTO usuarios SET ?";
 
     return query(sql, retornoForm);
   }
 
   buscaUsuarioPeloNome(retornoForm) {
     const sql =
-      "SELECT id, nome , urlFotoPerfil FROM las.usuarios WHERE nome like ?";
+      "SELECT id, nome , urlFotoPerfil FROM usuarios WHERE nome like ?";
 
     return query(sql, "%" + retornoForm + "%");
   }
 
   alterarUsuario(id, retornoForm) {
-    const sql = "UPDATE las.usuarios SET ? WHERE id = ?";
+    const sql = "UPDATE usuarios SET ? WHERE id = ?";
     return query(sql, [retornoForm, id]);
   }
 
   excluirUsuario(id) {
-    const sql = "DELETE FROM las.usuarios WHERE id = ?";
+    const sql = "DELETE FROM usuarios WHERE id = ?";
 
     return query(sql, id);
   }
@@ -42,13 +41,13 @@ class Usuario {
 
   buscaDadosPessoaisId(retornoId) {
     const sql =
-      "SELECT nomeCompleto, dataNascimento , rg, cpf FROM las.usuarios WHERE id = ?";
+      "SELECT nomeCompleto, dataNascimento , rg, cpf FROM usuarios WHERE id = ?";
 
     return query(sql, retornoId);
   }
 
   alterarDadosPessoais(id, retornoForm) {
-    const sql = "UPDATE las.usuarios SET ? WHERE id = ?";
+    const sql = "UPDATE usuarios SET ? WHERE id = ?";
     return query(sql, [retornoForm, id]);
   }
 
@@ -57,14 +56,13 @@ class Usuario {
   // Contatos
 
   buscaContatosId(retornoId) {
-    const sql =
-      "SELECT telefone, celular , email FROM las.usuarios WHERE id = ?";
+    const sql = "SELECT telefone, celular , email FROM usuarios WHERE id = ?";
 
     return query(sql, retornoId);
   }
 
   alterarContatos(id, retornoForm) {
-    const sql = "UPDATE las.usuarios SET ? WHERE id = ?";
+    const sql = "UPDATE usuarios SET ? WHERE id = ?";
     return query(sql, [retornoForm, id]);
   }
 
@@ -73,7 +71,7 @@ class Usuario {
   // Senha
 
   alterarSenha(id, retornoForm) {
-    const sql = "UPDATE las.usuarios SET ? WHERE id = ?";
+    const sql = "UPDATE usuarios SET ? WHERE id = ?";
     return query(sql, [retornoForm, id]);
   }
 
@@ -83,13 +81,13 @@ class Usuario {
 
   buscaEnderecoId(retornoId) {
     const sql =
-      "SELECT cep, endereco , numero, complemento, bairro FROM las.usuarios WHERE id = ?";
+      "SELECT cep, endereco , numero, complemento, bairro FROM usuarios WHERE id = ?";
 
     return query(sql, retornoId);
   }
 
   alterarEndereco(id, retornoForm) {
-    const sql = "UPDATE las.usuarios SET ? WHERE id = ?";
+    const sql = "UPDATE usuarios SET ? WHERE id = ?";
     return query(sql, [retornoForm, id]);
   }
 
@@ -98,13 +96,13 @@ class Usuario {
   // inicio query de validação
 
   validarNomeUsuarioNaoUtilizado(retornoForm) {
-    const sql = "SELECT nome FROM las.usuarios WHERE nome = ?";
+    const sql = "SELECT nome FROM usuarios WHERE nome = ?";
 
     return query(sql, retornoForm);
   }
 
   validarNomeUsuarioNaoUtilizadoPUT(id, retornoForm) {
-    const sql = "SELECT * FROM las.usuarios WHERE id != ? AND nome = ?";
+    const sql = "SELECT * FROM usuarios WHERE id != ? AND nome = ?";
 
     return query(sql, [id, retornoForm]);
   }

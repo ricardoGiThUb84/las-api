@@ -2,36 +2,36 @@ const query = require("../infraestrutura/database/queries");
 
 class Evento {
   listarEvento() {
-    const sql = "SELECT * FROM las.evento";
+    const sql = "SELECT * FROM evento";
 
     return query(sql);
   }
 
   buscaEventoId(retornoId) {
-    const sql = "SELECT * FROM las.evento WHERE id = ?";
+    const sql = "SELECT * FROM evento WHERE id = ?";
 
     return query(sql, retornoId);
   }
 
   incluirEvento(retornoForm) {
-    const sql = "INSERT INTO las.evento SET ?";
+    const sql = "INSERT INTO evento SET ?";
 
     return query(sql, retornoForm);
   }
 
   alterarEvento(id, retornoForm) {
-    const sql = "UPDATE las.evento SET ? WHERE id = ?";
+    const sql = "UPDATE evento SET ? WHERE id = ?";
     return query(sql, [retornoForm, id]);
   }
 
   excluirEvento(id) {
-    const sql = "DELETE FROM las.evento WHERE id = ?";
+    const sql = "DELETE FROM evento WHERE id = ?";
 
     return query(sql, id);
   }
 
   listarEventosAgendados() {
-    const sql = "SELECT * FROM las.evento WHERE dataInicio > CURDATE()";
+    const sql = "SELECT * FROM evento WHERE dataInicio > CURDATE()";
 
     return query(sql).then((agendado) => {
       return agendado.map((item) => ({ ...item }));
@@ -40,7 +40,7 @@ class Evento {
 
   listarEventosEmAndamento() {
     const sql =
-      "SELECT * FROM las.evento WHERE dataInicio <= CURDATE() and dataFim >= CURDATE()";
+      "SELECT * FROM evento WHERE dataInicio <= CURDATE() and dataFim >= CURDATE()";
 
     return query(sql).then((emAndamento) => {
       return emAndamento.map((item) => ({ ...item }));
@@ -48,7 +48,7 @@ class Evento {
   }
 
   listarEventosFinalizados() {
-    const sql = "SELECT * FROM las.evento WHERE dataFim < CURDATE()";
+    const sql = "SELECT * FROM evento WHERE dataFim < CURDATE()";
 
     return query(sql).then((finalizado) => {
       return finalizado.map((item) => ({ ...item }));
@@ -58,13 +58,13 @@ class Evento {
   // inicio query de validação
 
   validarNomeEventoNaoUtilizado(retornoForm) {
-    const sql = "SELECT * FROM las.evento WHERE nome = ?";
+    const sql = "SELECT * FROM evento WHERE nome = ?";
 
     return query(sql, retornoForm);
   }
 
   validaNomeEventoNaoUtilizadoPUT(id, retornoForm) {
-    const sql = "SELECT * FROM las.evento where not id = ? and nome = ?";
+    const sql = "SELECT * FROM evento where not id = ? and nome = ?";
 
     return query(sql, [id, retornoForm]);
   }

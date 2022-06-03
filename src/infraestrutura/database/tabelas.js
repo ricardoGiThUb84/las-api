@@ -51,7 +51,7 @@ class Tabelas {
 
   criarEventos() {
     const sql =
-      "CREATE TABLE IF NOT EXISTS las.evento(id INT AUTO_INCREMENT NOT NULL,nome VARCHAR(50) NOT NULL,descricao TEXT,urlFoto TEXT NOT NULL,dataInicio DATE NOT NULL,dataFim DATE NOT NULL,PRIMARY KEY(id))";
+      "CREATE TABLE IF NOT EXISTS evento(id INT AUTO_INCREMENT NOT NULL,nome VARCHAR(50) NOT NULL,descricao TEXT,urlFoto TEXT NOT NULL,dataInicio DATE NOT NULL,dataFim DATE NOT NULL,PRIMARY KEY(id))";
 
     this.pool.query(sql, (erro) => {
       if (erro) console.log(erro);
@@ -61,7 +61,7 @@ class Tabelas {
 
   criarTiposVendas() {
     const sql =
-      "CREATE TABLE IF NOT EXISTS las.tiposVendas (id INT NOT NULL, descricao VARCHAR(150) NOT NULL, PRIMARY KEY(id) )";
+      "CREATE TABLE IF NOT EXISTS tiposVendas (id INT NOT NULL, descricao VARCHAR(150) NOT NULL, PRIMARY KEY(id) )";
 
     this.pool.query(sql, (erro) => {
       if (erro) console.log(erro);
@@ -71,7 +71,7 @@ class Tabelas {
 
   criarUfs() {
     const sql =
-      "CREATE TABLE IF NOT EXISTS las.UFS(id INT NOT NULL, sigla VARCHAR(2) NOT NULL, nome VARCHAR(80) NOT NULL, PRIMARY KEY(id))";
+      "CREATE TABLE IF NOT EXISTS UFS(id INT NOT NULL, sigla VARCHAR(2) NOT NULL, nome VARCHAR(80) NOT NULL, PRIMARY KEY(id))";
 
     this.pool.query(sql, (erro) => {
       if (erro) console.log(erro);
@@ -81,7 +81,7 @@ class Tabelas {
 
   criarMunicipios() {
     const sql =
-      "CREATE TABLE IF NOT EXISTS las.municipios(id INT NOT NULL,nome VARCHAR(80) NOT NULL,`UF-sigla` VARCHAR(2) NOT NULL,`UF-nome` varchar(80),PRIMARY KEY(id));";
+      "CREATE TABLE IF NOT EXISTS municipios(id INT NOT NULL,nome VARCHAR(80) NOT NULL,`UF-sigla` VARCHAR(2) NOT NULL,`UF-nome` varchar(80),PRIMARY KEY(id));";
 
     this.pool.query(sql, (erro) => {
       if (erro) console.log(erro);
